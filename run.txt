@@ -1,0 +1,12 @@
+ENG
+Firstly you need to have at least Python 3.9.13 64-bit installed on your computer.
+1. To execute the program, open the terminal and go to the directory where the file exists.
+2. Type "python main.py".
+3. Act accordingly to the text displayed on the screen.
+
+
+PL
+Najpierw musisz upewnić się, że przynajmniej Python 3.9.13 64-bit jest zainstalowany na Twoim komputerze.
+1. Aby uruchomić program, otwórz terminal i przejdź do ścieżki, gdzie znajduje się program.
+2. Napisz "python main.py".
+3. Postępuj zgodnie z napisami wyświetlanymi na ekranie.
