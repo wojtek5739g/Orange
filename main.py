@@ -1,5 +1,8 @@
 import requests, sys, time, json, csv, os
 
+lowerPLNBound = 4.5
+higherPLNBound = 4.7
+
 class ResponsePathNotFound(FileNotFoundError):
     pass
 
@@ -95,7 +98,7 @@ def main(arguments):
 
     print("On those days prices of EUR were not between 4.5 and 4.7 PLN: ")
     for record in response_content['rates']:
-        if not 4.5 <= record['mid'] <= 4.7:
+        if not lowerPLNBound <= record['mid'] <= higherPLNBound:
             print(record['effectiveDate'])
 
 if __name__ == "__main__":
