@@ -40,10 +40,7 @@ def write_to_log(file_handle, response, writer):
         'HTTP_status_code': response.httpcode()
     })
 
-def check(response, file_handle, writer):
-    start = time.time()
-    end = time.time()
-    t = end - start
+def check(response, t, file_handle, writer):
     print(f'Time: {t}')
     if response.headers.get('Content-Type').startswith('application/json'):
         print("This is a JSON type file")
@@ -71,8 +68,6 @@ def main(arguments):
     X = int(input("Enter the number of checks: "))
     Y = int(input("Enter the number of seconds at which the checks are to run: "))
 
-    response = requests.get(urls['orange'])
-    response_content = response.json()
 
     try:
         with open('log.txt', 'a') as file_handle:
@@ -81,7 +76,11 @@ def main(arguments):
             if os.stat('log.txt').st_size == 0:
                 writer.writeheader()
             for i in range(0, X):
-                check(response, file_handle, writer)
+                start = time.time()
+                response = requests.get(urls['orange'])
+                end = time.time()
+                t = end - start
+                check(response, t, file_handle, writer)
                 time.sleep(Y)
     except FileNotFoundError:
         raise ResponsePathNotFound("Could not open response database")
@@ -90,6 +89,9 @@ def main(arguments):
         raise ResponsePermissionError(msg)
     except IsADirectoryError:
         raise ResponsePathIsDirectory("Can only work on files")
+
+    response = requests.get(urls['orange'])
+    response_content = response.json()
 
     print("On those days prices of EUR were not between 4.5 and 4.7 PLN: ")
     for record in response_content['rates']:

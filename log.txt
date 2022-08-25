@@ -19,3 +19,7 @@ Time,Is_Json,Has_Proper_Syntax,HTTP_status_code
 0.0,yes,yes,200
 0.0,yes,yes,200
 0.0,yes,yes,200
+0.0,yes,yes,200
+0.0,yes,yes,200
+0.14549493789672852,yes,yes,200
+0.053427934646606445,yes,yes,200
